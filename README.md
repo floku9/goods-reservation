@@ -40,25 +40,34 @@ local folder will be created folder called `htmlcov` with coverage report.
 - Python 3.12
 - Poetry
 
-### If poetry not installed, install it with
+To run the test without docker compose, you need to follow these steps:
 
-```bash
-pip install poetry
-```
+1. Install poetry (if you don't have it):
 
-1. To run tests without coverage use the following command:
+    ```bash
+    pip install poetry
+    ```
+
+2. Install dependencies:
+
+    ```bash
+    poetry install
+    ```
+
+3. Run the tests:
+    3.1. To run tests without coverage use the following command:
 
     ```bash
     poetry run pytest tests
     ```
 
-2. To run tests with coverage use the following command:
+    3.2. To run tests with coverage use the following command:
 
     ```bash
     poetry run pytest --cov=app tests
     ```
 
-3. If you want to run tests with coverage report in file, you need to run the following command:
+    3.3 If you want to run tests with coverage report in file, you need to run the following command:
 
     ```bash
     poetry run pytest --cov=app --cov-report html tests
