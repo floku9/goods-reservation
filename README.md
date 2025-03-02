@@ -16,7 +16,7 @@ To set up and run the project using Docker Compose, follow these steps:
 1. Clone the repository:
 
    ```bash
-   git clone <https://github.com/floku9/goods-reservation>
+   git clone https://github.com/floku9/goods-reservation
    cd goods-reservation
    ```
 
@@ -34,8 +34,9 @@ local folder will be created folder called `htmlcov` with coverage report.
 ## Running tests without docker compose
 
 To run tests without docker compose, you need to have installed:
-    - Python 3.12
-    - Poetry
+
+- Python 3.12
+- Poetry
 
 If poetry not installed, install it with:
 
