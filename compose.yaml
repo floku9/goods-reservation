@@ -1,0 +1,47 @@
+services:
+  db:
+    image: postgres:13
+    container_name: goods-reservation-db
+    env_file:
+      - .env 
+    ports:
+      - "5432:${DB_PORT}" 
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASS}
+      - POSTGRES_DB=${DB_NAME}
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME} -h localhost -p ${DB_PORT}" ]
+      interval: 5s
+      retries: 5
+      timeout: 3s
+    networks:
+      - goods-reservation-network
+
+  backend:
+    build:
+      dockerfile: Dockerfile
+    container_name: goods-reservation-backend
+    env_file:
+      - .env 
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8000:${BACKEND_PORT}"
+    environment:
+      - DB_HOST=db
+    command: > # Use latest alembic migration, run seed, and run server
+      sh -c "poetry run alembic upgrade head && poetry run python -m app.db.seed &&poetry run uvicorn app.main:app --host ${BACKEND_HOST} --port ${BACKEND_PORT}"
+    networks:
+      - goods-reservation-network
+
+volumes:
+  pg_data:
+
+
+networks:
+  goods-reservation-network:
+    driver: bridge
