@@ -4,7 +4,7 @@
 
 API that is made for reservation of goods
 
-### Common installation steps
+## Common installation steps
 
 1. Clone the repository:
 
