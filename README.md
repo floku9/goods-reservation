@@ -16,7 +16,7 @@ To set up and run the project using Docker Compose, follow these steps:
 1. Clone the repository:
 
    ```bash
-   git clone [https://github.com/floku9/goods-reservation](https://github.com/floku9/goods-reservation)
+   git clone <https://github.com/floku9/goods-reservation>
    cd goods-reservation
    ```
 
