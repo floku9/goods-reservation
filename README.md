@@ -55,6 +55,7 @@ To run the test without docker compose, you need to follow these steps:
     ```
 
 3. Run the tests:
+
     3.1. To run tests without coverage use the following command:
 
     ```bash
